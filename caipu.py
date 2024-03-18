@@ -16,8 +16,6 @@ json_data = response.json()
 
 print(json_data)
 
-
-content = "搜菜谱 辣子鸡"
 params = {"num":3, "word":content.replace(" ", "")[3:]}            
 headers = {'Content-Type': "application/x-www-form-urlencoded"}
 
