@@ -67,6 +67,8 @@ class caipu(Plugin):
                     i = 0                  
                     while i < len(data):
                         basic_info = (
+                            f"☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆\n"
+                            f"⌛ 菜谱ID: {data[i]['id']}\n"
                             f"⌛ 类型名称: {data[i]['type_name']}\n"
                             f"⌛ 菜肴名称: {data[i]['cp_name']}\n",
                             f"⌛ 做法:  {data[i]['zuofa']}\n",
