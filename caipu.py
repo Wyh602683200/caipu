@@ -8,7 +8,7 @@ Created on Mon Mar 18 12:32:30 2024
 
 
 url = "https://api.qqsuu.cn/api/dm-caipu"
-params = {"word":"辣子鸡","num":10}  
+params = {"word":"辣子鸡","num":3}  
 headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 response = requests.get(url=url, params=params, headers=headers,timeout=2)
 
@@ -18,7 +18,7 @@ print(json_data)
 
 
 content = "搜菜谱 辣子鸡"
-params = {"num":10, "word":content.replace(" ", "")[3:]}            
+params = {"num":3, "word":content.replace(" ", "")[3:]}            
 headers = {'Content-Type': "application/x-www-form-urlencoded"}
 
 response = requests.get(url=url, params=params, headers=headers,timeout=2)
