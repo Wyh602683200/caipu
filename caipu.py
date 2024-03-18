@@ -78,7 +78,7 @@ class caipu(Plugin):
                         )
                         formatted_output.append(basic_info)
                         i+=1                  
-                    return formatted_output
+                    return  '\n'.join(['\n'.join(item) for item in formatted_output])
                 else:
                     logger.error(f"主接口返回值异常:{json_data}")
                     raise ValueError('not found')
