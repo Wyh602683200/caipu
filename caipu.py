@@ -33,7 +33,7 @@ class caipu(Plugin):
         if e_context['context'].type != ContextType.TEXT:
             return
         self.content = e_context["context"].content.strip()
-        
+
         if self.content.startswith("搜菜谱"):
             logger.info(f"[{__class__.__name__}] 收到消息: {self.content}")
             reply = Reply()
@@ -45,14 +45,14 @@ class caipu(Plugin):
                 e_context.action = EventAction.BREAK_PASS
             else:
                 reply.type = ReplyType.ERROR
-                reply.content = "获取失败,等待修复⌛️"
+                reply.content = "获取失败,等待修复⌛️ "
                 e_context["reply"] = reply
                 e_context.action = EventAction.BREAK_PASS
 
 
     def caipu(self):
         url = BASE_URL_DM
-        params = {"num":3, "word":self.content.replace(" ", "")[3:]}            
+        params = {"num":3, "word":self.content.replace(" ", "")[3:]}
         headers = {'Content-Type': "application/x-www-form-urlencoded"}
         try:
             # 主接口
@@ -62,23 +62,23 @@ class caipu(Plugin):
                 if json_data.get('code') == 200 and json_data['data']['list']:
                     data = json_data['data']['list'][:3]
                     logger.info(json_data)
-                                        
+
                     formatted_output = []
-                    i = 0                  
+                    i = 0
                     while i < len(data):
                         basic_info = (
                             f"☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆\n"
-                            f"⌛ 菜谱ID: {data[i]['id']}\n",
-                            f"⌛ 类型名称: {data[i]['type_name']}\n",
-                            f"⌛ 菜肴名称: {data[i]['cp_name']}\n",
-                            f"⌛ 做法:  {data[i]['zuofa']}\n",
-                            f"⌛ 特性:  {data[i]['texing']}\n",
-                            f"⌛ 提示:  {data[i]['tishi']}\n",
-                            f"⌛ 调料:  {data[i]['tiaoliao']}\n",
-                            f"⌛ 原料:  {data[i]['yuanliao']}\n"
+                            f"⌛  菜谱ID: {data[i]['id']}\n",
+                            f"⌛  类型名称: {data[i]['type_name']}\n",
+                            f"⌛  菜肴名称: {data[i]['cp_name']}\n",
+                            f"⌛  做法:  {data[i]['zuofa']}\n",
+                            f"⌛  特性:  {data[i]['texing']}\n",
+                            f"⌛  提示:  {data[i]['tishi']}\n",
+                            f"⌛  调料:  {data[i]['tiaoliao']}\n",
+                            f"⌛  原料:  {data[i]['yuanliao']}\n"
                         )
                         formatted_output.append(basic_info)
-                        i+=1                  
+                        i+=1
 
                     return '\n'.join(['\n'.join(item) for item in formatted_output])
                 else:
@@ -89,9 +89,6 @@ class caipu(Plugin):
                 raise Exception('request failed')
         except Exception as e:
             logger.error(f"接口异常：{e}")
-                
+
         logger.error("所有接口都挂了,无法获取")
-        return None
-
-
-
+        return None                                                                                                                                                                                                                                                                                                                  
